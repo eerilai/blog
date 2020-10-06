@@ -1,11 +1,16 @@
 @import "~bulma/sass/utilities/initial-variables"
+@import url(https://fonts.googleapis.com/css2?family=David+Libre&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap)
 
+$site-title-font: "Merriweather", serif
 // Config vars
-$kaldi-red: #FD461E
-$kaldi-red-invert: #fff
-
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
+$background: #FFCFFF
+$body-background-color: $background
+$navbar-background-color: $black
+$navbar-item-color: $background
+$navbar-item-hover-color: $black
+$navbar-item-hover-background-color: $background
+$primary: $black
+$primary-invert: $white
 
 .content .taglist
   list-style: none
@@ -24,6 +29,29 @@ $primary-invert: $kaldi-red-invert
 
 .pagination .navbar
 	justify-content: center
+
+.navbar
+  font-family: $site-title-font
+  font-weight: bold
+  width: 800px
+  margin: auto
+
+.navbar-menu
+  justify-content: center
+  margin: auto
+  margin-right: 0 !important
+
+.site-title
+  z-index: 31
+  position: relative
+  text-shadow: 2px 2px #FFCFFF
+  color: $black
+  font-family: $site-title-font
+  font-size: 68px
+  font-weight: 300
+  justify-content: center
+  margin: -5px 0px -20px 0px
+  display: flex
 
 // Helper Classes
 .full-width-image-container
