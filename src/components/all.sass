@@ -8,7 +8,7 @@ $body-background-color: $background
 $navbar-background-color: $black
 $navbar-item-color: $background
 $navbar-item-hover-color: $black
-$navbar-item-hover-background-color: $background
+$navbar-item-hover-background-color: #FFADFF
 $primary: $black
 $primary-invert: $white
 
@@ -29,6 +29,9 @@ $primary-invert: $white
 
 .pagination .navbar
 	justify-content: center
+
+.section
+  min-height: 75vh
 
 $point-width: 30px
 .navbar
@@ -57,6 +60,9 @@ $point-width: 30px
     justify-content: center
     margin: auto
     margin-right: 0 !important
+@media screen and (max-width: 1023px)
+  .navbar::after
+    margin-top: -3.25rem !important
 .pagination
   min-height: 3.25rem
   background-color: $navbar-background-color
