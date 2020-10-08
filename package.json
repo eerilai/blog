@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "author": "GatsbyCentral.com",
   "dependencies": {
-    "bulma": "^0.7.5",
+    "bulma": "^0.9.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.24.72",
     "gatsby-awesome-pagination": "^0.3.6",
