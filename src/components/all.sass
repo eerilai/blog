@@ -12,6 +12,13 @@ $navbar-item-hover-background-color: #FFADFF
 $primary: $black
 $primary-invert: $white
 
+.page
+  // background-color: #FFADFF
+  background: url('../img/diamonds.png') no-repeat center center fixed
+  background-size: auto
+  min-height: 1vh
+    
+
 .content .taglist
   list-style: none
   margin-bottom: 0
@@ -32,19 +39,43 @@ $primary-invert: $white
 
 .section
   min-height: 75vh
+  width: 800px
+  margin: auto
+  background-color: rgba(255,207,255,.75)
+  background-image:
+  linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(255,207,255,1) 5%),
+  linear-gradient(90deg, rgba(255,207,255,1) 95%, rgba(255,207,255,0) 100%)
+  .container
+    border: 6px solid $black
+    padding: 1em
 
+// Site Title
+.site-title
+  z-index: 31
+  position: relative
+  text-shadow: 2px 2px #FFCFFF
+  color: $black
+  font-family: $site-title-font
+  font-size: 68px
+  font-weight: 300
+  justify-content: center
+  margin: -5px 0px -20px 0px
+  display: flex
+  
+// Navbar
 $point-width: 30px
+$nav-bar-width: 800px
 .navbar
   font-family: $site-title-font
   font-weight: bold
-  width: 800px
+  width: $nav-bar-width 
   margin: auto
   &:before
     position: absolute
     content: ''
     background: $black
     width: $point-width
-    margin-left: -$point-width
+    margin-left: -29px
     height: 100%
     clip-path: polygon(100% 0%, 0% 50%, 100% 100%)
   &:after
@@ -67,7 +98,7 @@ $point-width: 30px
   min-height: 3.25rem
   background-color: $navbar-background-color
   margin: auto !important
-  width: 800px
+  width: $nav-bar-width
   display:flex
   align-items: stretch
   position: relative
@@ -76,7 +107,7 @@ $point-width: 30px
     content: ''
     background: $black
     width: $point-width
-    margin-left: -$point-width
+    margin-left: -29px
     height: 100%
     clip-path: polygon(100% 0%, 0% 50%, 100% 100%)
   &:after
@@ -89,17 +120,14 @@ $point-width: 30px
     margin-left: 100%
     clip-path: polygon(0% 0%, 0% 100%, 100% 50%)
 
-.site-title
-  z-index: 31
-  position: relative
-  text-shadow: 2px 2px #FFCFFF
-  color: $black
-  font-family: $site-title-font
-  font-size: 68px
-  font-weight: 300
-  justify-content: center
-  margin: -5px 0px -20px 0px
-  display: flex
+//PostList
+h1
+  font-size: 20px
+.post-title
+  font-weight: bold
+  font-size: 1.5em
+.button
+  background-color: $black
 
 // Helper Classes
 .full-width-image-container
