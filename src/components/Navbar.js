@@ -21,7 +21,7 @@ const Navbar = () => (
           <div className="navbar-menu is-lowercase">
             <Link
               className="navbar-item"
-              to="blog" 
+              to="/" 
             >
               Blog
             </Link>
