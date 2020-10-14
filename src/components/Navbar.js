@@ -27,31 +27,31 @@ const Navbar = () => (
             </Link>
             <Link
               className="navbar-item"
-              to="fiction" 
+              to="/fiction" 
             >
               Fiction
             </Link>
             <Link
               className="navbar-item"
-              to="art" 
+              to="/art" 
             >
               Art
             </Link>
             <Link
               className="navbar-item"
-              to="poetry" 
+              to="/poetry" 
             >
               Poetry
             </Link>
             <Link
               className="navbar-item"
-              to="games" 
+              to="/games" 
             >
               Games
             </Link>
             <Link
               className="navbar-item"
-              to="about" 
+              to="/about" 
             >
               About
             </Link>
