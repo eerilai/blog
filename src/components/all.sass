@@ -75,6 +75,8 @@ $box-shadow: ()
   align-items: center
   display: flex
   min-height: 100vh
+.enter-button-wrapper
+  display: contents 
 .enter-button-text
   color: $background
   pointer-events: none
@@ -84,7 +86,6 @@ $box-shadow: ()
   justify-content: center
   align-items: center
   position: fixed
-  transition: transform 1s, width 2s, height 2s
   .enter-button-main
     @include animate(pulse, 6s, infinite, normal)
     animation-delay: 0s
@@ -94,7 +95,7 @@ $box-shadow: ()
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)
     position: fixed
     animation-fill-mode: none 
-    transition: transform 1s, width 1s, height 1s
+    transition: transform 250ms, width 1s
     animation-delay: 3s
     &.enter-button-ripple
       width: 0px
@@ -103,19 +104,9 @@ $box-shadow: ()
       background: $black
       animation-timing-function: ease-out
       animation-delay: 3s
-      &:hover
-        
-      //   animation-iteration-count: 1
-      //   animation-play-state: running
     &:hover
       @include animate(none, 6s, 1, normal)
-      // // animation-play-state: paused
-      // width: 100px
-      // height: 100px
       transform: rotate(90deg) scale(1)
-  &:hover
-    // @inclue animate(none, 0s, 1, normal)
-    animation-iteration-count: 1
 
 .site-title.landing-title  
   margin-top: -215px
