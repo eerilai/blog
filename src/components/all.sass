@@ -13,11 +13,112 @@ $primary: $black
 $primary-invert: $white
 
 .page
-  // background-color: #FFADFF
   background: url('../img/diamonds.png') no-repeat center center fixed
   background-size: auto
-  min-height: 1vh
-    
+  min-height: 100vh
+$box-shadow: ()
+@for $i from 1 through 50
+  $box-shadow: $box-shadow, random(100px)/2+px, random(100)/1.2+px, hsl(random(360), 100, 50)
+
+@keyframes pulse
+  0%
+    // transform: scale(1)
+    width: 100px
+    height: 100px
+  7%
+    // transform: scale(.85)
+    width: 85px
+    height: 85px
+  10%
+    // transform: scale(.85)
+    width: 85px
+    height: 85px
+  13%
+    // transform: scale(1)
+    width: 100px
+    height: 100px
+@keyframes pulse-ripple
+  0%
+    opacity: 0
+  10%
+    opacity: 0
+  10.1%
+    // transform: scale(1)
+    opacity: 1
+    width: 80px
+    height: 80px
+  13%
+    width: 100px
+    height: 100px
+  50%
+    // transform: scale(1.5)
+    opacity: 0
+    width: 150px
+    height: 150px
+  100%
+    // transform: scale(1.5)
+    opacity: 0
+@mixin animate($name, $duration, $iteration, $direction) 
+  animation: 
+    duration: $duration
+    iteration-count: $iteration
+    name: $name
+    direction: $direction
+@mixin center
+  display: flex
+  justify-content: center
+  align-items: center
+  position: fixed
+
+.landing-page
+  justify-content: center    
+  align-items: center
+  display: flex
+  min-height: 100vh
+.enter-button-text
+  color: $background
+  pointer-events: none
+  @include center
+.enter-button
+  display: flex
+  justify-content: center
+  align-items: center
+  position: fixed
+  transition: transform 1s, width 2s, height 2s
+  .enter-button-main
+    @include animate(pulse, 6s, infinite, normal)
+    animation-delay: 0s
+    width: 100px
+    height: 100px
+    background: $black
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)
+    position: fixed
+    animation-fill-mode: none 
+    transition: transform 1s, width 1s, height 1s
+    animation-delay: 3s
+    &.enter-button-ripple
+      width: 0px
+      height: 0px
+      @include animate(pulse-ripple, 6s, infinite, normal)
+      background: $black
+      animation-timing-function: ease-out
+      animation-delay: 3s
+      &:hover
+        
+      //   animation-iteration-count: 1
+      //   animation-play-state: running
+    &:hover
+      @include animate(none, 6s, 1, normal)
+      // // animation-play-state: paused
+      // width: 100px
+      // height: 100px
+      transform: rotate(90deg) scale(1)
+  &:hover
+    // @inclue animate(none, 0s, 1, normal)
+    animation-iteration-count: 1
+
+.site-title.landing-title  
+  margin-top: -215px
 
 .content .taglist
   list-style: none
