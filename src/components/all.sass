@@ -22,19 +22,15 @@ $box-shadow: ()
 
 @keyframes pulse
   0%
-    // transform: scale(1)
     width: 100px
     height: 100px
   7%
-    // transform: scale(.85)
     width: 85px
     height: 85px
   10%
-    // transform: scale(.85)
     width: 85px
     height: 85px
   13%
-    // transform: scale(1)
     width: 100px
     height: 100px
 @keyframes pulse-ripple
@@ -43,7 +39,6 @@ $box-shadow: ()
   10%
     opacity: 0
   10.1%
-    // transform: scale(1)
     opacity: 1
     width: 80px
     height: 80px
@@ -51,12 +46,10 @@ $box-shadow: ()
     width: 100px
     height: 100px
   50%
-    // transform: scale(1.5)
     opacity: 0
     width: 150px
     height: 150px
   100%
-    // transform: scale(1.5)
     opacity: 0
 @mixin animate($name, $duration, $iteration, $direction) 
   animation: 
@@ -69,12 +62,10 @@ $box-shadow: ()
   justify-content: center
   align-items: center
   position: fixed
-
+  
 .landing-page
-  justify-content: center    
-  align-items: center
-  display: flex
   min-height: 100vh
+  min-width: 100vw
 .enter-button-wrapper
   display: contents 
 .enter-button-text
@@ -85,7 +76,9 @@ $box-shadow: ()
   display: flex
   justify-content: center
   align-items: center
-  position: fixed
+  position: absolute
+  top: 50%
+  left: 50%
   .enter-button-main
     @include animate(pulse, 6s, infinite, normal)
     animation-delay: 0s
@@ -93,7 +86,7 @@ $box-shadow: ()
     height: 100px
     background: $black
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)
-    position: fixed
+    position: absolute
     animation-fill-mode: none 
     transition: transform 250ms, width 1s
     animation-delay: 3s
@@ -108,9 +101,58 @@ $box-shadow: ()
       @include animate(none, 6s, 1, normal)
       transform: rotate(90deg) scale(1)
 
-.site-title.landing-title  
-  margin-top: -215px
+@keyframes scroll-widen 
+  0%
+  100%
+    width: 800px
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%)
+@keyframes scroll-open
+  0%
+    width: 800px
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%)
+  10%
+    height: 100px
+  100%
+    width: 800px
+    height: 52px
+    clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%)
+    top: 103px
+.scroll-open-animation
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 100px
+  height: 100px
+  background: $black
+  clip-path: polygon(50% 0, 50% 0, 100% 50%, 50% 100%, 50% 100%, 0% 50%)
+  display: flex
+  justify-content: center
+  align-items: center
+  position: absolute
+  animation-name: scroll-widen, scroll-open 
+  animation-delay: 0s, .5s
+  animation-duration: .5s, 1s
+  animation-fill-mode: forwards
+  animation-iteration-count: 1
 
+@keyframes title-open
+  100%
+    top: 46px
+.site-title.landing-title  
+  top: 34.7%
+  left: 50%
+  transform: translate(-50%, -50%)
+  margin-left: 
+  position: absolute
+  margin: 0
+  &.title-open-animation
+    top: 34.7%
+    margin: 0
+    position: absolute
+    animation-name: title-open
+    animation-duration: 1s
+    animation-delay: .5s
+    animation-fill-mode: forwards
 .content .taglist
   list-style: none
   margin-bottom: 0
@@ -162,23 +204,24 @@ $nav-bar-width: 800px
   font-weight: bold
   width: $nav-bar-width 
   margin: auto
-  &:before
-    position: absolute
-    content: ''
-    background: $black
-    width: $point-width
-    margin-left: -29px
-    height: 100%
-    clip-path: polygon(100% 0%, 0% 50%, 100% 100%)
-  &:after
-    position: absolute
-    content: ''
-    background: $black
-    width: $point-width 
-    margin-right: -$point-width
-    height: 100%
-    margin-left: 100%
-    clip-path: polygon(0% 0%, 0% 100%, 100% 50%)
+  clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%)
+  // &:before
+  //   position: absolute
+  //   content: ''
+  //   background: $black
+  //   width: $point-width
+  //   margin-left: -29px
+  //   height: 100%
+  //   clip-path: polygon(100% 0%, 0% 50%, 100% 100%)
+  // &:after
+  //   position: absolute
+  //   content: ''
+  //   background: $black
+  //   width: $point-width 
+  //   margin-right: -$point-width
+  //   height: 100%
+  //   margin-left: 100%
+  //   clip-path: polygon(0% 0%, 0% 100%, 100% 50%)
   .navbar-menu
     justify-content: center
     margin: auto

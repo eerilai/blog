@@ -7,9 +7,9 @@ export const Landing = () => {
   const [isEnterClicked, setEnterClicked] = useState(false);
   return (
     <div className="landing-page">
-      <div className="site-title landing-title">jozujanai</div>
+      <div className={`site-title landing-title ${isEnterClicked && "title-open-animation"}`}>jozujanai</div>
       { (() => isEnterClicked ?
-           null : <EnterButton update={setEnterClicked}/> )()}
+           <div className="scroll-open-animation"/> : <EnterButton update={setEnterClicked}/> )()}
     </div>
   )
 }
