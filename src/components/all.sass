@@ -30,10 +30,10 @@ $box-shadow: ()
   0%
     width: 100px
     height: 100px
-  7%
+  4%
     width: 85px
     height: 85px
-  10%
+  8%
     width: 85px
     height: 85px
   13%
@@ -42,13 +42,14 @@ $box-shadow: ()
 @keyframes pulse-ripple
   0%
     opacity: 0
-  10%
+  7.9%
     opacity: 0
-  10.1%
+  8%
     opacity: 1
     width: 80px
     height: 80px
-  13%
+  12%
+    opacity: 1
     width: 100px
     height: 100px
   50%
@@ -115,6 +116,7 @@ $enter-pulse-delay: 3s
       .enter-button-ripple
         animation-name: pulse-ripple
         @include enter-animation-timing
+        animation-timing-function: ease-out
         position: absolute
         clip-path: $enter-diamond-shape
         width: 0px
