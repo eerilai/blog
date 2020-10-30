@@ -11,6 +11,7 @@ $navbar-item-hover-color: $black
 $navbar-item-hover-background-color: #FFADFF
 $primary: $black
 $primary-invert: $white
+$navbar-shape: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%)
 
 .page
   background: url('../img/diamonds.png') no-repeat center center fixed
@@ -19,6 +20,11 @@ $primary-invert: $white
 $box-shadow: ()
 @for $i from 1 through 50
   $box-shadow: $box-shadow, random(100px)/2+px, random(100)/1.2+px, hsl(random(360), 100, 50)
+
+@mixin center
+  display: flex
+  justify-content: center
+  align-items: center
 
 @keyframes pulse
   0%
@@ -51,56 +57,6 @@ $box-shadow: ()
     height: 150px
   100%
     opacity: 0
-@mixin animate($name, $duration, $iteration, $direction) 
-  animation: 
-    duration: $duration
-    iteration-count: $iteration
-    name: $name
-    direction: $direction
-@mixin center
-  display: flex
-  justify-content: center
-  align-items: center
-  position: fixed
-  
-.landing-page
-  min-height: 100vh
-  min-width: 100vw
-.enter-button-wrapper
-  display: contents 
-.enter-button-text
-  color: $background
-  pointer-events: none
-  @include center
-.enter-button
-  display: flex
-  justify-content: center
-  align-items: center
-  position: absolute
-  top: 50%
-  left: 50%
-  .enter-button-main
-    @include animate(pulse, 6s, infinite, normal)
-    animation-delay: 0s
-    width: 100px
-    height: 100px
-    background: $black
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)
-    position: absolute
-    animation-fill-mode: none 
-    transition: transform 250ms, width 1s
-    animation-delay: 3s
-    &.enter-button-ripple
-      width: 0px
-      height: 0px
-      @include animate(pulse-ripple, 6s, infinite, normal)
-      background: $black
-      animation-timing-function: ease-out
-      animation-delay: 3s
-    &:hover
-      @include animate(none, 6s, 1, normal)
-      transform: rotate(90deg) scale(1)
-
 @keyframes scroll-widen 
   0%
   100%
@@ -115,44 +71,86 @@ $box-shadow: ()
   100%
     width: 800px
     height: 52px
-    clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%)
+    clip-path: $navbar-shape
     top: 103px
-.scroll-open-animation
-  top: 50%
-  left: 50%
-  transform: translate(-50%, -50%)
-  width: 100px
-  height: 100px
-  background: $black
-  clip-path: polygon(50% 0, 50% 0, 100% 50%, 50% 100%, 50% 100%, 0% 50%)
-  display: flex
-  justify-content: center
-  align-items: center
-  position: absolute
-  animation-name: scroll-widen, scroll-open 
-  animation-delay: 0s, .5s
-  animation-duration: .5s, 1s
-  animation-fill-mode: forwards
-  animation-iteration-count: 1
-
 @keyframes title-open
   100%
     top: 46px
-.site-title.landing-title  
-  top: 34.7%
-  left: 50%
-  transform: translate(-50%, -50%)
-  margin-left: 
-  position: absolute
-  margin: 0
-  &.title-open-animation
-    top: 34.7%
-    margin: 0
+
+$enter-diamond-shape: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)
+$enter-pulse-duration: 6s
+$enter-pulse-delay: 3s
+@mixin enter-animation-timing
+  animation:
+    duration: $enter-pulse-duration 
+    delay: $enter-pulse-delay
+    iteration-count: infinite
+.landing-page
+  min-height: 100vh
+  .enter-button-wrapper
     position: absolute
-    animation-name: title-open
-    animation-duration: 1s
-    animation-delay: .5s
-    animation-fill-mode: forwards
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    @include center
+    .enter-button-text
+      position: absolute
+      color: $background
+      font-weight: bold
+      pointer-events: none
+    .enter-button
+      @include center
+      .enter-button-main
+        animation-name: pulse
+        @include enter-animation-timing
+        transition: transform 250ms, width 1s
+        clip-path: $enter-diamond-shape
+        position: absolute
+        width: 100px
+        height: 100px
+        background: $black
+        &:hover
+          animation-name: none
+          transform: rotate(90deg) scale(1)
+      .enter-button-ripple
+        animation-name: pulse-ripple
+        @include enter-animation-timing
+        position: absolute
+        clip-path: $enter-diamond-shape
+        width: 0px
+        height: 0px
+        background: $black
+  .scroll-open-animation
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 100px
+    height: 100px
+    background: $black
+    clip-path: polygon(50% 0, 50% 0, 100% 50%, 50% 100%, 50% 100%, 0% 50%)
+    position: absolute
+    animation:
+      name: scroll-widen, scroll-open 
+      delay: 0s, .5s
+      duration: .5s, 1s
+      fill-mode: forwards
+      iteration-count: 1
+  .site-title
+    top: 39%
+    left: 50%
+    transform: translate(-50%, -50%)
+    margin-left: 
+    position: absolute
+    margin: 0
+    &.title-open-animation
+      margin: 0
+      position: absolute
+      animation:
+        name: title-open
+        duration: 1s
+        delay: .5s
+        fill-mode: forwards
+
 .content .taglist
   list-style: none
   margin-bottom: 0
@@ -204,31 +202,10 @@ $nav-bar-width: 800px
   font-weight: bold
   width: $nav-bar-width 
   margin: auto
-  clip-path: polygon(4% 0, 96% 0, 100% 50%, 96% 100%, 4% 100%, 0% 50%)
-  // &:before
-  //   position: absolute
-  //   content: ''
-  //   background: $black
-  //   width: $point-width
-  //   margin-left: -29px
-  //   height: 100%
-  //   clip-path: polygon(100% 0%, 0% 50%, 100% 100%)
-  // &:after
-  //   position: absolute
-  //   content: ''
-  //   background: $black
-  //   width: $point-width 
-  //   margin-right: -$point-width
-  //   height: 100%
-  //   margin-left: 100%
-  //   clip-path: polygon(0% 0%, 0% 100%, 100% 50%)
+  clip-path: $navbar-shape
   .navbar-menu
     justify-content: center
-    margin: auto
-    margin-right: 0 !important
-@media screen and (max-width: 1023px)
-  .navbar::after
-    margin-top: -3.25rem !important
+    margin: auto !important
 .pagination
   min-height: 3.25rem
   background-color: $navbar-background-color
@@ -237,23 +214,7 @@ $nav-bar-width: 800px
   display:flex
   align-items: stretch
   position: relative
-  &:before
-    position: absolute
-    content: ''
-    background: $black
-    width: $point-width
-    margin-left: -29px
-    height: 100%
-    clip-path: polygon(100% 0%, 0% 50%, 100% 100%)
-  &:after
-    position: absolute
-    content: ''
-    background: $black
-    width: $point-width 
-    margin-right: -$point-width
-    height: 100%
-    margin-left: 100%
-    clip-path: polygon(0% 0%, 0% 100%, 100% 50%)
+  clip-path: $navbar-shape
 
 //PostList
 h1

@@ -4,13 +4,13 @@ const EnterButton = ({update}) => (
 
     <div className="enter-button-wrapper">
         <div className="enter-button">
-        <div className="enter-button-main enter-button-ripple"/>
+        <div className="enter-button-ripple"/>
         <div
             className="enter-button-main" 
             onClick={()=> update(true)}
             />
         </div>
-        <div className="enter-button-text">vvv</div>
+        <div className="enter-button-text">VvV</div>
     </div>
 );
 
