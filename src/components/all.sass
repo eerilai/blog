@@ -59,20 +59,14 @@ $box-shadow: ()
   100%
     opacity: 0
 @keyframes scroll-widen 
-  0%
   100%
     width: 800px
-    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%)
+    clip-path: $navbar-shape
 @keyframes scroll-open
-  0%
-    width: 800px
-    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%)
   10%
     height: 100px
   100%
-    width: 800px
     height: 52px
-    clip-path: $navbar-shape
     top: 103px
 @keyframes title-open
   100%
@@ -122,6 +116,8 @@ $enter-pulse-delay: 3s
         width: 0px
         height: 0px
         background: $black
+  $widen-duration: 500ms
+  $open-duration: 700ms
   .scroll-open-animation
     top: 50%
     left: 50%
@@ -133,8 +129,8 @@ $enter-pulse-delay: 3s
     position: absolute
     animation:
       name: scroll-widen, scroll-open 
-      delay: 0s, .5s
-      duration: .5s, 1s
+      delay: 0s, $widen-duration
+      duration: $widen-duration, $open-duration
       fill-mode: forwards
       iteration-count: 1
   .site-title
@@ -149,8 +145,8 @@ $enter-pulse-delay: 3s
       position: absolute
       animation:
         name: title-open
-        duration: 1s
-        delay: .5s
+        duration: $open-duration
+        delay: $widen-duration
         fill-mode: forwards
 
 .content .taglist
