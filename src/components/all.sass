@@ -183,7 +183,7 @@ $enter-pulse-delay: 3s
 	justify-content: center
 
 .section
-  min-height: 75vh
+  min-height: calc(100vh - 255px)
   width: 800px
   margin: auto
   background-color: rgba(255,207,255,.75)
@@ -220,13 +220,16 @@ $nav-bar-width: 800px
     justify-content: center
     margin: auto !important
 .pagination
+  transform: translate(-50%, 0%)
+  position: absolute
+  left: 50%
+  bottom: 75px
   min-height: 3.25rem
   background-color: $navbar-background-color
   margin: auto !important
   width: $nav-bar-width
   display:flex
   align-items: stretch
-  position: relative
   clip-path: $navbar-shape
 
 //PostList
