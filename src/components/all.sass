@@ -68,6 +68,12 @@ $box-shadow: ()
   100%
     height: 52px
     top: 103px
+@keyframes scroll-drop
+  10%
+    height: 100px
+  100%
+    top: calc(100% - 75px)
+    height: 52px
 @keyframes title-open
   100%
     top: 46px
@@ -118,8 +124,9 @@ $enter-pulse-delay: 3s
         background: $black
   $widen-duration: 500ms
   $open-duration: 700ms
-  .scroll-open-animation
-    top: 50%
+  .scroll-open-animation, .scroll-open-animation-drop
+    &.scroll-open-animation
+      top: 50%
     left: 50%
     transform: translate(-50%, -50%)
     width: 100px
@@ -129,6 +136,14 @@ $enter-pulse-delay: 3s
     position: absolute
     animation:
       name: scroll-widen, scroll-open 
+      delay: 0s, $widen-duration
+      duration: $widen-duration, $open-duration
+      fill-mode: forwards
+      iteration-count: 1
+  .scroll-open-animation-drop
+    top: 50%
+    animation:
+      name: scroll-widen, scroll-drop
       delay: 0s, $widen-duration
       duration: $widen-duration, $open-duration
       fill-mode: forwards

@@ -9,7 +9,11 @@ export const Landing = () => {
     <div className="landing-page">
       <div className={`site-title ${isEnterClicked && "title-open-animation"}`}>jozujanai</div>
       { (() => isEnterClicked ?
-           <div className="scroll-open-animation"/> : <EnterButton update={setEnterClicked}/> )()}
+           <div>
+            <div className="scroll-open-animation"/> 
+            <div className="scroll-open-animation-drop"/>
+           </div>
+           : <EnterButton update={setEnterClicked}/> )()}
     </div>
   )
 }
